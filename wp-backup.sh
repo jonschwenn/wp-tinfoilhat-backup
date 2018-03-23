@@ -48,24 +48,24 @@ cd backup-$(date +%Y-%m-%d)
 # Backup Database
 get_db_name "$@"
 mysqldump --opt -Q $DB_NAME > database-$(date +%Y-%m-%d).sql || \
-err "Database Backup Failed"
+err "ERROR: Database Backup Failed"
 
 # Backup Site Files
 tar -czf site-$(date +%Y-%m-%d).tar.gz $WP_DIR || \
-err "Site File Backup Failed"
+err "ERROR: Site File Backup Failed"
 
 # Create Final Backup File
 cd $BACKUP_DIR
 tar -cf backup-$(date +%Y-%m-%d).tar backup-$(date +%Y-%m-%d) && \
 log "Backup backup-$(date +%Y-%m-%d).tar Created" || \
-err "Backup Process Failed"
+err "ERROR: Backup Process Failed"
 }
 
 remote_sync (){
 
 scp -P$REMOTE_PORT $BACKUP_DIR/backup-$(date +%Y-%m-%d).tar $REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH && \
 log "Backup Sent to Remote Host" || \
-err "Remote Host Process Failed"
+err "ERROR: Remote Host Process Failed"
 }
 
 s3cmd_sync (){
@@ -73,7 +73,7 @@ s3cmd_sync (){
 # Send copy to S3cmd configured object storage
 s3cmd put $BACKUP_DIR/backup-$(date +%Y-%m-%d).tar s3://$S3CMD_BUCKET  && \
 log "Backup Sent to Object Storage" || \
-err "Object Storage Process Failed"
+err "ERROR: Object Storage Process Failed"
 }
 
 cleanup (){
