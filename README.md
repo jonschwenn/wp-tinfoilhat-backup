@@ -10,7 +10,7 @@ Instead of taking a backup using a WordPress plugin which lives inside of WordPr
 - Populate your username and password for MySQL in ~/.my.cnf
 - s3cmd installed and configured
  - DigitalOcean Spaces is a great low-cost option for Object storage.
- - [Here is a tutoria](https://www.digitalocean.com/community/tutorials/how-to-configure-s3cmd-2-x-to-manage-digitalocean-spaces) on how to install s3cmd and configure it for DigitalOcean Spaces
+ - [Here is a tutorial](https://www.digitalocean.com/community/tutorials/how-to-configure-s3cmd-2-x-to-manage-digitalocean-spaces) on how to install s3cmd and configure it for DigitalOcean Spaces
 - A remote host configured with SSH Key authentication if a remote host destination is used
 
 ### Setup
