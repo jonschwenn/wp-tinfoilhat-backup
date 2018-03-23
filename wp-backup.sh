@@ -41,6 +41,10 @@ echo  "TODO: Prevalidate remote host connection"
 
 create_backup (){
 # Setup Backup Directory
+if [ ! -d "$BACKUP_DIR" ]
+then
+  mkdir -p $BACKUP_DIR
+fi
 cd $BACKUP_DIR
 mkdir backup-$(date +%Y-%m-%d)
 cd backup-$(date +%Y-%m-%d)
