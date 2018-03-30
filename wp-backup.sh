@@ -88,7 +88,7 @@ cleanup (){
     ls -t | sed -e '1,'"$COPIES"'d' | xargs -d '\n' rm && \
     log "Cleanup Process for Backups older than $COPIES days completed"
   else
-    log "Cleanup Process found backups older than $COPIES days "
+    log "Cleanup Process found no backups older than $COPIES days "
   fi
 }
 
